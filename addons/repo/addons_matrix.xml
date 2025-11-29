@@ -42,7 +42,7 @@
 </assets>
 </extension>
 </addon>
-<addon id="repository.VxvulgoPlay" name="[B][COLOR white]Vxvulgo Play [COLOR blue]Repo[/COLOR][/COLOR][/B]" version="1.0" provider-name="Vxvulgo Play">
+<addon id="repository.VxvulgoPlay" name="[B][COLOR white]Vxvulgo Play [COLOR blue]Repo[/COLOR][/COLOR][/B]" version="1.5" provider-name="Vxvulgo Play">
 <requires>
 <import addon="xbmc.addon" version="12.0.0"/>
 </requires>
@@ -72,7 +72,7 @@
 <screenshot>resources/series.jpg</screenshot>
 </assets>
 <news>
-[COLOR blue]●[/COLOR] v1.0 - ADD RESOLVEURL.
+[COLOR blue]●[/COLOR] v1.5 - ADD RESOLVEURL.
 [COLOR blue]●[/COLOR] v1.4 - KODI 19 MATRIX.
 [COLOR blue]●[/COLOR] v1.3 - CORREÇÕES DE BUGS.
 [COLOR blue]●[/COLOR] v1.2 - UPDATES CORRIGIDOS.
