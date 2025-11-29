@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="repository.VxvulgoPlay" name="[B][COLOR white]Vxvulgo Play [COLOR blue]Oficial[/COLOR][/COLOR][/B]" version="1.5" provider-name="Vxvulgo Play">
+<addon id="repository.VxvulgoPlay" name="[B][COLOR white]Vxvulgo Play [COLOR blue]Repo[/COLOR][/COLOR][/B]" version="1.5" provider-name="Vxvulgo Play">
 <requires>
 <import addon="xbmc.addon" version="12.0.0"/>
 </requires>
