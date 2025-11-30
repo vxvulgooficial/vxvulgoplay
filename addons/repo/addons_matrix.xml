@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="plugin.video.VxvulgoPlay.Matrix" name="[B][COLOR white]Vxvulgo Play[/COLOR][/B]" version="2.1.4" provider-name="[B][COLOR white]Vxvulgo Play[/COLOR][/B]">
+<addon id="plugin.video.VxvulgoPlay.Matrix" name="[B][COLOR white]VXVULGO PLAY[/COLOR][/B]" version="2.1.4" provider-name="[B][COLOR white]VXVULGO PLAY[/COLOR][/B]">
 <requires>
 <import addon="script.module.six"/>
 <import addon="script.module.kodi-six"/>
