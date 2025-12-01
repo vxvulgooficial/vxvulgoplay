@@ -1,186 +1,285 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-	<head>
-		<meta charset="utf-8">
-		<title>Repo - VXVULGO PLAY</title>
-		<link rel="icon" type="imagem/png" href="https://i.imgur.com/BfFiAAy.png" />
-		<meta name="robots" content="noindex">
-		<meta name="googlebot" content="noindex" />
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="keywords" content="">
-		<meta name="description" content="">
-		<link rel="stylesheet" href="./pages/css/bootstrap.min.css">
-		<link rel="stylesheet" href="./pages/css/animate.min.css">
-		<link rel="stylesheet" href="./pages/css/et-line-font.css">
-		<link rel="stylesheet" href="./pages/css/font-awesome.min.css">
-		<link rel="stylesheet" href="./pages/css/vegas.min.css">
-		<link rel="stylesheet" href="./pages/css/style.css">
-		<link href='https://fonts.googleapis.com/css?family=Rajdhani:400,500,700' rel='stylesheet' type='text/css'>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
-		<script src="./pages/js/bootstrap.min.js"></script>
-		<script src="./pages/js/vegas.min.js"></script>
-		<script src="./pages/js/wow.min.js"></script>
-		<script src="./pages/js/smoothscroll.js"></script>
-		<script src="./pages/js/custom.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-		<script src="./pages/js/jquery.cookie.js"></script>
-		<script src="./pages/js/jquery.mb.YTPlayer.min.js"></script>
-		<script src="https://kit.fontawesome.com/73f96667f9.js"></script>
-		<style>
-			a:link,
-			a:visited {
-				text-decoration: none;
-			}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VXVULGO PLAY - Repositório Oficial</title>
+  <link rel="icon" href="https://i.imgur.com/BfFiAAy.png" type="image/png" />
+  
+  <style>
+    /* RESET */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: all 0.3s ease;
+    }
 
-			a:hover,
-			a:active {
-				text-decoration: none;
-			}
+    body {
+      min-height: 100vh;
+      background: #0f1115;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+    }
 
-			// Outros
-			:root {
-				--gray-900: #121214;
-				--gray-300: #444448;
-				--primary-200: #fcd085;
-				--primary-400: #ffbc48;
-				font-size: 62.5%;
-			}
+    /* Partículas do mouse */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      width: 12px;
+      height: 12px;
+      pointer-events: none;
+      opacity: 0;
+      animation: particle-animation 1s ease-out forwards;
+    }
 
-			.sr-only {
-				position: absolute;
-				width: 1px;
-				height: 1px;
-				padding: 0;
-				margin: -1px;
-				overflow: hidden;
-				clip: rect(0, 0, 0, 0);
-				border-width: 0;
-				white-space: nowrap;
-			}
+    @keyframes particle-animation {
+      0% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
 
-			header {
-				text-align: center;
-				color: white;
-				padding: 3.2rem;
-				max-width: 46rem;
-				margin: auto;
-				padding: 0;
-				box-sizing: border-box;
-			}
+    /* Header */
+    header {
+      margin-bottom: 40px;
+      z-index: 1;
+    }
 
-			.input-wrapper {
-				position: relative;
-			}
+    header img {
+      width: 180px;
+      max-width: 90vw;
+      filter: drop-shadow(0 0 15px #ffb84d);
+      margin-bottom: 20px;
+      user-select: none;
+      animation: float 2s ease-in-out infinite;
+    }
 
-			header input {
-				padding: 1rem 1.6rem;
-				border-radius: .8rem;
-				background-color: #444448;
-				border: 0;
-				width: 100%;
-				color: white;
-				font-size: 1.6rem;
-			}
+    header h1 {
+      font-size: 3rem;
+      color: #ffb84d;
+      letter-spacing: 4px;
+      text-shadow: 0 0 12px #ffb84d88;
+      margin-bottom: 8px;
+      user-select: none;
+      animation: fadeIn 2s ease;
+    }
 
-			.input-wrapper i {
-				position: absolute;
-				right: 1.2rem;
-				bottom: 1.2rem;
-			}
-		</style>
-		<script>
-			jQuery(function() {
-				var myPlayer = jQuery("#bgndVideo").YTPlayer({
-					onReady: function(player) {
-						YTPConsole.append(player.id + " player is ready");
-						YTPConsole.append(" < br > ");
-					}
-				});
-				myPlayer.on("YTPData", function(e) {
-					$(".dida").html(e.prop.title + " < br > @ " + e.prop.channelTitle);
-					$("#videoData").show();
-				});
-				var YTPConsole = jQuery("#eventListener");
-				myPlayer.on("YTPStart YTPEnd YTPLoop YTPPause YTPBuffering YTPMuted YTPUnmuted", function(e) {
-					YTPConsole.append("event: " + e.type + " (" + jQuery("#bgndVideo").YTPGetPlayer().getPlayerState() + ") > time: " + e.time);
-					YTPConsole.append(" < br > ");
-				});
-			});
-		</script>
-	</head>
-	<body ondragstart="return false" onselectstart="return false">
-		<section id="home">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-offset-2 col-md-8 col-sm-12">
-						<div class="home-thumb">
-							<img class="wow fadeInUp" data-wow-delay="0.1s" style="width: 20%;" src="https://i.imgur.com/kjtlfSP.png" oncontextmenu="return false" />
-							<h4 class="wow fadeInUp" data-wow-delay="0.6s">VXVULGO PLAY</h4>
-							<div class="wow fadeInUp" data-wow-delay="1.0s">
-								<a href="https://vxvulgooficial.github.io/vxvulgoplay/addons/repository.VxvulgoPlay.zip" title="Suporte para: 16.1, 17, 18, 19, 20 e 21+" class="button" target="_blank">REPOSITÓRIO 1.0</a>
-								<a href="https://t.me/+6oulWWlEwpo0ZDE5" target="_blank" title="Participe do Telegram"
-							</div>
-						</div>
-					</div>
-				</div>
-				<a id="bgndVideo" class="player" data-property="{videoURL:'C1xUergJyvA',containment:'body', stopMovieOnBlur:false, showControls:false, autoPlay:true, loop:true, vol:20, mute:false, startAt:0,  stopAt:59, opacity:1, addRaster:true, quality:'hd720', optimizeDisplay:true}"></a>
-		</section>
-		<section id="about">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-sm-12">
-						<img src="https://i.imgur.com/8U1bKJf.png" class="img-responsive wow fadeInUp animated animated" alt="About" style="visibility: visible; animation-name: fadeInUp;" oncontextmenu="return false">
-					</div>
-					<div class="col-md-6 col-sm-12">
-						<div class="about-thumb">
-							<div class="section-title">
-								<h1 class="wow fadeIn" data-wow-delay="0.2s">Gestor de arquivos</h1>
-								<h1 class="wow fadeInUp" data-wow-delay="0.6s">
-									<header>
-										<div class="input-wrapper">
-											<input id="filter" type="text" readonly="true" value="https://vxvulgooficial.github.io/vxvulgoplay/" placeholder="https://vxvulgooficial.github.io/vxvulgoplay/">
-										</div>
-									</header>
-							</div>
-							</h1>
-							<div class="wow fadeInUp" data-wow-delay="0.6s">
-								<span style="color: green;">●</span> Digite o link corretamente. <br />
-								<span style="color: firebrick;">●</span> Proibido a venda do VXVULGO PLAY. <br />
-								<span style="color: firebrick;">●</span> Não vendemos IPTV, caso ache sites ou mesmo apps é falso.
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<footer>
-			<div class="container">
-				<div class="row">
-					<div class="copyright-text">
-						<h2>Copyright © 2025 ● VXVULGO PLAY</h2>
-						<q class="wow fadeInUp" data-wow-delay="0.3s"> O autor não se responsabiliza pelo conteúdo encontrado aqui nem o mau uso do mesmo. Nosso add-on funciona apenas como um agregador de links e apenas organiza os mesmos, bem como as sinopses, títulos e outros! </q>
-					</div>
-				</div>
-			</div>
-			</div>
-		</footer>
-		<a href="#back-top" class="go-top">
-			<i class="fa fa-angle-up"></i>
-		</a>
-		</head>
-	</body>
+    header p {
+      font-size: 1.3rem;
+      color: #aaa;
+      margin-bottom: 30px;
+      user-select: none;
+      animation: fadeIn 3s ease;
+    }
+
+    /* Botão */
+    .btn-primary {
+      background: linear-gradient(45deg, #ffb84d, #ffd67a);
+      border: none;
+      border-radius: 30px;
+      padding: 15px 40px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #222;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ffb84d88;
+      transition: all 0.35s ease;
+      user-select: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .btn-primary:hover {
+      box-shadow:
+        0 0 25px #ffb84d,
+        0 0 40px #ffb84d,
+        0 0 60px #ffb84d;
+      transform: scale(1.05);
+    }
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    section {
+      max-width: 600px;
+      margin: 0 auto 60px;
+      padding: 0 15px;
+      z-index: 1;
+    }
+
+    section h2 {
+      font-size: 2.4rem;
+      color: #ffb84d;
+      margin-bottom: 25px;
+      text-shadow: 0 0 8px #ffb84d88;
+      user-select: none;
+      animation: fadeIn 2s ease;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      color: #ddd;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      margin-bottom: 12px;
+    }
+
+    .link-box {
+      background: #22252a;
+      padding: 14px 20px;
+      border-radius: 25px;
+      box-shadow: inset 0 0 15px #111;
+      font-size: 1rem;
+      letter-spacing: 1.2px;
+      color: #ffcb6b;
+      user-select: all;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .link-box:hover {
+      background-color: #2f343b;
+      box-shadow: inset 0 0 25px #ffb84d;
+      color: #fff;
+    }
+
+    /* Status messages */
+    .status {
+      margin-top: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #7ed957;
+      user-select: none;
+      min-height: 22px;
+    }
+
+    footer {
+      font-size: 0.9rem;
+      color: #666;
+      user-select: none;
+      padding-top: 20px;
+      border-top: 1px solid #22252a;
+    }
+
+    footer q {
+      font-style: italic;
+      display: block;
+      margin-top: 10px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #888;
+      user-select: none;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsividade */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      section h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Video Removed: Now with particle effect -->
+  
+  <header>
+    <h1>VXVULGO PLAY</h1>
+    <p>Repositório Oficial e Suporte para Kodi</p>
+    <a href="https://vxvulgooficial.github.io/vxvulgoplay/addons/repository.VxvulgoPlay.zip" class="btn-primary" target="_blank" rel="noopener noreferrer">Baixar Repositório</a>
+  </header>
+
+  <section>
+    <h2>Gestor de Arquivos</h2>
+    <div class="about-text">
+      <p>Nosso add-on funciona apenas como agregador de links, organizando filmes, séries, animes e TV.</p>
+      <p>Digite o link corretamente para acessar os plugins:</p>
+      <div class="link-box" onclick="copyToClipboard(this)">https://vxvulgooficial.github.io/vxvulgoplay/</div>
+      <div class="status" id="copyStatus"></div>
+      <p style="color: #7ed957;">● Digite o link corretamente.</p>
+      <p style="color: #ff3b3b;">● Proibido vender o VXVULGO PLAY.</p>
+      <p style="color: #ff3b3b;">● Não vendemos IPTV.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Copyright © 2025 ● VXVULGO PLAY</p>
+    <q>O autor não se responsabiliza pelo conteúdo encontrado nem pelo mau uso do mesmo. O add-on funciona apenas como agregador de links, títulos e sinopses.</q>
+  </footer>
+
+  <script>
+    // Função para copiar o link
+    function copyToClipboard(el) {
+      const text = el.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const status = document.getElementById('copyStatus');
+        status.textContent = "Link copiado para a área de transferência!";
+        setTimeout(() => {
+          status.textContent = "";
+        }, 2500);
+      }).catch(() => {
+        alert('Não foi possível copiar o texto. Por favor copie manualmente.');
+      });
+    }
+
+    // Efeito de Partículas no Mouse
+    document.body.addEventListener('mousemove', function(event) {
+      let particle = document.createElement('div');
+      particle.classList.add('particle');
+      document.body.appendChild(particle);
+
+      // Set the position of the particle
+      let x = event.clientX;
+      let y = event.clientY;
+      particle.style.left = `${x}px`;
+      particle.style.top = `${y}px`;
+
+      // Remove the particle after animation ends
+      setTimeout(() => {
+        particle.remove();
+      }, 1000);
+    });
+  </script>
+
+</body>
 </html>
-<div id="div" style="display:none">
-	<table>
-	  <tr>
-		<td><a href="addons/repository.VxvulgoPlay.zip">addons/repository.VxvulgoPlay.zip</a></td>
-	  </tr>
-	  <tr>
-		<td><a href="addons/plugin.video.VxvulgoPlay.zip">addons/plugin.video.VxvulgoPlay.zip</a></td>
-	  </tr>
-	  <tr>
-		<td><a href="addons/plugin.video.VxvulgoPlay.Matrix.zip">addons/plugin.video.VxvulgoPlay.Matrix.zip</a></td>
-	  </tr>
-	</table>
-</div>
